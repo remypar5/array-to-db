@@ -5,7 +5,7 @@
   "main": "./build/arrayToDb.js",
   "author": "Remy Parzinski <dev@parzinski.nl>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "clean:node_modules": "rm -rf node_modules/ && rm yarn.lock && yarn cache clean && yarn",
     "build": "babel src --out-dir build --ignore src/**/*.test.js",
