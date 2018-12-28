@@ -1,4 +1,4 @@
-const arrayToTable = (arr, idProp = 'id') => {
+const arrayToDb = (arr, idProp = 'id') => {
     const table = {};
     const createUniqueKey = getUniqueKeyBuilder(idProp);
 
@@ -8,7 +8,7 @@ const arrayToTable = (arr, idProp = 'id') => {
         if (! table.hasOwnProperty(key)) {
             table[key] = item;
         } else {
-            console.warn(`arrayToTable: Duplicate key: "${key}"`);
+            console.warn(`arrayToDb: Duplicate key: "${key}"`);
         }
     });
 
@@ -24,8 +24,8 @@ const getUniqueKeyBuilder = (idProp) => (item) => {
     return `${item[idProp]}`;
 };
 
-export default arrayToTable;
+export default arrayToDb;
 export {
-    arrayToTable,
+    arrayToDb,
     getUniqueKeyBuilder,
 };

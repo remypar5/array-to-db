@@ -1,6 +1,6 @@
-import arrayToTable from './arrayToTable';
+import arrayToDb from './arrayToDb';
 
-describe('arrayToTable', () => {
+describe('arrayToDb', () => {
     let originArray;
 
     beforeEach(() => {
@@ -17,7 +17,7 @@ describe('arrayToTable', () => {
     });
 
     it('should create a table out of the input array', () => {
-        const table = arrayToTable(originArray);
+        const table = arrayToDb(originArray);
         const expectation = {
             'id1': { id: 'id1', name: 'name1' },
             'id2': { id: 'id2', name: 'name2' },
@@ -28,7 +28,7 @@ describe('arrayToTable', () => {
     });
 
     it('should accept a property name to use as unique identifier', () => {
-        const table = arrayToTable(originArray, 'name');
+        const table = arrayToDb(originArray, 'name');
         const expectation = {
             'name1': { id: 'id1', name: 'name1' },
             'name2': { id: 'id2', name: 'name2' },
@@ -39,7 +39,7 @@ describe('arrayToTable', () => {
     });
 
     it('accepts an array of property names to use as unique identifier', () => {
-        const table1 = arrayToTable(originArray, ['id', 'name']);
+        const table1 = arrayToDb(originArray, ['id', 'name']);
         const expectation1 = {
             'id1|name1': { id: 'id1', name: 'name1' },
             'id2|name2': { id: 'id2', name: 'name2' },
@@ -48,7 +48,7 @@ describe('arrayToTable', () => {
 
         expect(table1).toEqual(expectation1, 'array [id, name]');
 
-        const table2 = arrayToTable(originArray, ['name', 'id']);
+        const table2 = arrayToDb(originArray, ['name', 'id']);
         const expectation2 = {
             'name1|id1': { id: 'id1', name: 'name1' },
             'name2|id2': { id: 'id2', name: 'name2' },
@@ -59,7 +59,7 @@ describe('arrayToTable', () => {
 
     it('accepts a function to generate the unique identifier', () => {
         const identifier = item => `prefix_${item.id}`;
-        const table1 = arrayToTable(originArray, identifier);
+        const table1 = arrayToDb(originArray, identifier);
         const expectation1 = {
             'prefix_id1': { id: 'id1', name: 'name1' },
             'prefix_id2': { id: 'id2', name: 'name2' },
@@ -82,14 +82,14 @@ describe('arrayToTable', () => {
         });
 
         it('should warn about duplicates', () => {
-            const table = arrayToTable(originArray);
+            const table = arrayToDb(originArray);
             const expectation = {
                 'duplicate': { id: 'duplicate', name: 'name1' },
                 'unique': { id: 'unique', name: 'name3' },
             };
 
             expect(table).toEqual(expectation);
-            expect(consoleSpy).toHaveBeenCalledWith('arrayToTable: Duplicate key: "duplicate"');
+            expect(consoleSpy).toHaveBeenCalledWith('arrayToDb: Duplicate key: "duplicate"');
         });
     });
 });
