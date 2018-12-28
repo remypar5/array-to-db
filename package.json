@@ -1,6 +1,6 @@
 {
   "name": "@remypar5/array-to-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple utility to create a database table out of a given array of objects",
   "main": "./build/arrayToDb.js",
   "author": "Remy Parzinski <dev@parzinski.nl>",
