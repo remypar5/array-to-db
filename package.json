@@ -6,6 +6,14 @@
   "author": "Remy Parzinski <dev@parzinski.nl>",
   "license": "MIT",
   "private": false,
+  "homepage": "https://github.com/remypar5/array-to-db",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remypar5/array-to-db.git"
+  },
+  "bugs": {
+    "url": "https://github.com/remypar5/array-to-db/issues"
+  },
   "scripts": {
     "clean:node_modules": "rm -rf node_modules/ && rm yarn.lock && yarn cache clean && yarn",
     "build": "babel src --out-dir build --ignore src/**/*.test.js",
