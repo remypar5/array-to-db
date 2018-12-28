@@ -1,13 +1,15 @@
 {
-  "name": "array-to-table",
+  "name": "@remypar5/array-to-db",
   "version": "1.0.0",
-  "description": "A simple utility to create a DB table out of a given array of objects",
-  "main": "src/arrayToTable.js",
-  "author": "Remy Parzinski",
+  "description": "A simple utility to create a database table out of a given array of objects",
+  "main": "./build/arrayToDb.js",
+  "author": "Remy Parzinski <dev@parzinski.nl>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "clean:node_modules": "rm -rf node_modules/ && rm yarn.lock && yarn cache clean && yarn",
+    "build": "babel src --out-dir build --ignore src/**/*.test.js",
+    "prepublishOnly": "yarn build",
     "test": "jest",
     "test:dev": "jest --watchAll",
     "test:cov": "jest --coverage",
@@ -25,10 +27,13 @@
     }
   },
   "devDependencies": {
-    "babel-core": "^7.0.0-bridge.0",
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "babel-minify": "^0.5.0",
+    "babel-preset-minify": "^0.5.0",
     "jest": "^23.6.0"
   }
 }
